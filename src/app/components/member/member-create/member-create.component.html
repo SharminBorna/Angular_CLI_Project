@@ -1,0 +1,54 @@
+
+  <form class="form-container" [formGroup]="memberForm" (submit)="insert()">
+    <div class="f">
+      <h2 class="mat-display-2">Add New Member</h2>
+    </div>
+    <mat-form-field class="f-w">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="memberName" required>
+      <mat-error *ngIf="f.memberName.touched && f.memberName.errors?.required">Member name is required!</mat-error>
+      <mat-error *ngIf="f.memberName.touched && f.memberName.errors?.maxlength">Member name can be maximum 50 char!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="f-w">
+      <mat-label>Designation</mat-label>
+      <mat-select formControlName="designationId">
+        <mat-option value="">None</mat-option>
+        <mat-option *ngFor="let d of designation" [value]="d.designationId">
+          {{d.desiName}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="f.designationId.touched && f.designationId.errors">Designation is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="f-w">
+      <mat-label>Joining Date</mat-label>
+      <input matInput formControlName="joiningDate" required [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="f.joiningDate.touched && f.joiningDate.errors?.required">Joining Date is required!</mat-error>
+    </mat-form-field>
+
+    <div class="mat-form-field f-w">
+      <mat-label style="margin-right:16px">Gender</mat-label>
+      <mat-radio-group formControlName="gender" aria-label="Select an option">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="f.gender.touched && f.gender.errors">Gender is required!</mat-error>
+    </div>
+
+    <mat-form-field appearance="standard" class="f-w">
+      <mat-label>Picture</mat-label>
+      <ngx-mat-file-input formControlName="picture" [accept]="'image/*'" (change)="onChange($event)"></ngx-mat-file-input>
+      <mat-icon matSuffix>insert_photo</mat-icon>
+      <mat-error *ngIf="f.picture.touched && f.picture.errors">Picture is required!</mat-error>
+    </mat-form-field>
+
+    <div class="f-w">
+      <button [disabled]="memberForm.invalid" mat-raised-button type="submit" color="primary"><mat-icon>save_alt</mat-icon>Save</button>
+    </div>
+    <div class="f-w">
+      <a mat-raised-button color="primary" [routerLink]="['/member']"><mat-icon>arrow_left_alt</mat-icon> Back to List</a>
+    </div>
+  </form>

@@ -1,0 +1,56 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title class="card-title">
+      <h2 class="mat-display-2">Member List</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      Registered Member...
+    </mat-card-subtitle>
+    <span class="filter"></span>
+    <a [routerLink]="['/add-member']" mat-mini-fab color="primary"><mat-icon>add</mat-icon></a>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="picture">
+          <mat-header-cell *matHeaderCellDef>Picture</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <img class="row-image" src="http://localhost:55080/Uploads/{{element.picture}}" />
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Member Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.memberName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="designation">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Designation</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{getDesiName(element.designationId) }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="joiningDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Joining Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.joiningDate | date: 'yyyy-MMM-dd' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.gender }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" [routerLink]="['/edit-member', element.memberId]"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnList"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnList;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[3, 5, 10, 25]" [pageSize]="3" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,19 @@
+
+<form class="form-container" [formGroup]="desiForm" (submit)="update()">
+  <div class="f">
+    <h2 class="mat-display-2">Edit Designation</h2>
+  </div>
+
+  <mat-form-field class="f-w">
+    <mat-label>Designation</mat-label>
+    <input matInput formControlName="desiName" required>
+    <mat-error *ngIf="f.desiName.touched && f.desiName.errors">Designation is required!</mat-error>
+  </mat-form-field>
+
+  <div class="f-w">
+    <button [disabled]="desiForm.invalid" mat-raised-button type="submit" color="primary"><mat-icon>save_alt</mat-icon>Update</button>
+  </div>
+  <div class="f-w">
+    <a mat-raised-button color="primary" [routerLink]="['/designation']"><mat-icon>arrow_left_alt</mat-icon> Back to List</a>
+  </div>
+</form>

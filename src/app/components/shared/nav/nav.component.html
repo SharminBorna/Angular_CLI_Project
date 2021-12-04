@@ -1,0 +1,35 @@
+<div class="main-container">
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side"  style="background-color:lightskyblue">
+      <mat-list role="list">
+        <mat-list-item role="listitem">
+          <a mat-button [routerLink]="['/home']"><mat-icon>home</mat-icon> Home</a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <a mat-button [routerLink]="['/designation']"><mat-icon>list</mat-icon> Designation</a>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <a mat-button [routerLink]="['/member']"><mat-icon>account_circle</mat-icon> Member</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar color="primary" class="main-toolbar">
+        <mat-toolbar-row>
+          <button mat-icon-button [routerLink]="['/home']" class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <h1 class="nav-brand">Trilok Bachik Pathshala</h1>
+          <a mat-button [routerLink]="['/home']"><mat-icon>home</mat-icon> Home</a>
+          <span class="example-spacer"></span>
+          <a mat-button [routerLink]="['/designation']">Designation</a>
+          <a mat-button [routerLink]="['/member']"><mat-icon>account_circle</mat-icon> Member</a>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+      <div style="margin-left:950px">
+        <p>&copy; All rights reserved...  Developed By Sharmin Borna</p>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,22 @@
+.example-container {
+  width: 100%;
+  height: 100%;
+  margin: 10px auto;
+  border: 1px solid #555;
+}
+.main-container{
+  display:flex;
+  flex-direction:column;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.nav-brand{
+  padding-bottom:5px;
+}

@@ -1,0 +1,28 @@
+.filter {
+  flex: 1 1 auto;
+}
+
+.card-container {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 25px auto 10px auto;
+}
+
+.table-container {
+  box-sizing: border-box;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+
+.row-image {
+  max-height: 50px;
+  max-width: 50px;
+  overflow: hidden;
+  border: solid 1px #FFFFFF;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  /*-webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);*/
+}
